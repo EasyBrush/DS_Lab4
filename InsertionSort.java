@@ -8,7 +8,7 @@ public class InsertionSort
 {
     public void InsertSort(int[] data, int start, int end)
     {
-        for(int i= start; i<end; i++)
+        for(int i= start; i<=end; i++)
         {
             int item = data[i];
             int pointer = i;

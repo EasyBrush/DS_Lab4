@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 
 public class Runner
@@ -21,9 +22,9 @@ public class Runner
         //String output = args[1];
         //String sortType = args[2];
         
-        String input = "";
+        String input = "ran5K.dat";
         String output ="OutFileTEST.txt";
-        String sortType = "";
+        String sortType = "QuickSort3";
         
         try
         {
@@ -36,6 +37,48 @@ public class Runner
              * read line by line and parse entire thing and put into an array? 
              */
             
+            //int[] Data = new int[10];
+            //int limit = 10;
+            
+            String line = ""; 
+            String dataString = "";
+            
+            while((line = inFile.readLine()) != null)
+            {                
+                dataString += line + " ";
+            }
+            //dataString += line + " ";
+            
+
+            //parse
+            String[] dataArrayString = dataString.trim().split("\\s+");
+            
+            System.out.println(Arrays.toString(dataArrayString));
+            
+            int[] Data = new int[dataArrayString.length];                  
+            
+            for(int i = 0; i< dataArrayString.length; i++)
+            {//converts array of string to array of int
+                Data[i] = Integer.parseInt(dataArrayString[i].trim());
+            }
+            
+            //at this point we have data array
+            
+            System.out.println(Arrays.toString(Data) + " " + "k");
+            
+            QuickSort1 quickSort = new QuickSort1();
+            InsertionSort insertSort = new InsertionSort();
+            QuickSort2 quickSort2 = new QuickSort2();
+            QuickSort3 quickSort3 = new QuickSort3();
+            
+            
+            
+            //quickSort.sort(Data, 0, Data.length-1);
+            
+            //insertSort.InsertSort(Data, 0, Data.length-1);
+            //System.out.println(Arrays.toString(Data));
+            
+            
             
             /*
              * time stuff
@@ -44,7 +87,41 @@ public class Runner
             long endTime = 0;
             
             
-            
+            switch(sortType)
+            {
+                case "QuickSort1":
+                    quickSort.sort(Data,  0, Data.length-1);
+                    
+                case "QuickSort2":
+                    if(Data.length <= 100)
+                    {
+                        System.out.println("insertion sort, thing is less than 100 to begin with");
+                        insertSort.InsertSort(Data, 0, Data.length-1);
+                    }
+                    else
+                    {
+                        System.out.println(Data.length);
+                        quickSort2.sort(Data, 0, Data.length-1);                      
+                        
+                    }
+                    System.out.println(Arrays.toString(Data));
+                    
+                case "QuickSort3":
+                    if(Data.length <= 50)
+                    {
+                        System.out.println("insertion sort, thing is less than 50 to begin with");
+                        insertSort.InsertSort(Data, 0, Data.length-1);
+                    }
+                    else
+                    {
+                        System.out.println(Data.length);
+                        quickSort2.sort(Data, 0, Data.length-1);                      
+                        
+                    }
+                    System.out.println(Arrays.toString(Data));
+                case "QuickSort4" :
+                    
+            }
             
             
             

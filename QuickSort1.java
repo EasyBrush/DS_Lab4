@@ -1,3 +1,5 @@
+//import java.util.Arrays;
+
 /**
  * quick sort with 1st item as pivot
  * partition size 1 and 2 stopping case
@@ -19,35 +21,76 @@ public class QuickSort1
      * gets pivot, first item of partition 
      * partition needs to be size >1.
      */
-    public int getPivot(int[] data, int start, int stop)
+    public int getPivot(int[] data, int start)
     {
         return data[start];
     }
-    
+    //0, 49 0
     public int partition(int[] data, int start, int stop)
     {
-        boolean done = false;
+        //boolean done = false;
         int lowPartition = start;
         int highPartition = stop;
-        int pivot = getPivot(data, start, stop);
+        int pivot = getPivot(data, start);
+        //int temp;
         
-        while(!done)
+        //swap(data, start, lowPartition);
+        while(lowPartition < stop)
         {
-            while(data[lowPartition] <= pivot)
+            while(lowPartition < highPartition && data[lowPartition] <= pivot)
             {
-                ++lowPartition;
+                lowPartition += 1;
             }
-            
-            while(pivot < data[highPartition])
+            while(data[highPartition] > pivot)
+            {
+                highPartition -= 1;
+            }
+            if(lowPartition < highPartition)
+            {                
+                swap(data,lowPartition, highPartition);
+            }
+            else
+            {
+                break;
+            }
+
+        }
+        swap(data, start, highPartition);
+        return highPartition;
+        
+        /*while(!done)
+        {            
+            while(pivot <= data[highPartition])
             {
                 --highPartition;
             }
             
+            //swap(data, lowPartition, highPartition);
+
+            
+            //System.out.println(pivot);
+            //System.out.println("Before data[lowPartition]: " + data[lowPartition] + " low partition value: " + lowPartition);
+            while(data[lowPartition] <= pivot)
+            {    
+                //System.out.println("data[lowPartition]: " + data[lowPartition] + " low partition value: " + lowPartition);
+                ++lowPartition;   
+                
+            }
+            
+            
+            swap(data, highPartition, lowPartition);
+            
+
+            
             if(lowPartition >= highPartition)
             {
+                //data[highPartition] = pivot;
                 done = true;
             }
-            else
+            
+  
+            
+            /*else
             {   //r
                 
                 //swap data[lowPartition] and data[highPartition]
@@ -58,7 +101,8 @@ public class QuickSort1
                 --highPartition;
             }
         }
-        return highPartition;
+        return highPartition;*/
+        
     }
     
     /**
@@ -76,13 +120,14 @@ public class QuickSort1
         {
             return;
         }
-        
-        int j = partition(data, low, high);
+        //System.out.println(Arrays.toString(data));
+        int j = partition(data, low, high); 
+        //System.out.println(Arrays.toString(data) + " " + "j value: " + j);
         
         //recursively sort low partition (low to j)
         //recursively sort high partition (j+1 to high)
-        sort(data, low, j);
-        sort(data, j+1, high);
+        sort(data, low, j-1);
+        sort(data, j+1, high);        
     }
     
     public void swap(int[] data, int i, int j)
