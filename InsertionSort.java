@@ -1,7 +1,7 @@
 /**
  * Insertion Sort
  * 
- * @author Bryan
+ * @author Bryan Cheung
  *
  */
 public class InsertionSort

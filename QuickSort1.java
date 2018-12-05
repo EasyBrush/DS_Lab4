@@ -25,7 +25,14 @@ public class QuickSort1
     {
         return data[start];
     }
-    //0, 49 0
+    /**
+     * Partitions array into a high partition and low partition
+     *  returns the highPartition start index
+     * @param data
+     * @param start
+     * @param stop
+     * @return
+     */
     public int partition(int[] data, int start, int stop)
     {
         //boolean done = false;
@@ -58,54 +65,10 @@ public class QuickSort1
         swap(data, start, highPartition);
         return highPartition;
         
-        /*while(!done)
-        {            
-            while(pivot <= data[highPartition])
-            {
-                --highPartition;
-            }
-            
-            //swap(data, lowPartition, highPartition);
-
-            
-            //System.out.println(pivot);
-            //System.out.println("Before data[lowPartition]: " + data[lowPartition] + " low partition value: " + lowPartition);
-            while(data[lowPartition] <= pivot)
-            {    
-                //System.out.println("data[lowPartition]: " + data[lowPartition] + " low partition value: " + lowPartition);
-                ++lowPartition;   
-                
-            }
-            
-            
-            swap(data, highPartition, lowPartition);
-            
-
-            
-            if(lowPartition >= highPartition)
-            {
-                //data[highPartition] = pivot;
-                done = true;
-            }
-            
-  
-            
-            /*else
-            {   //r
-                
-                //swap data[lowPartition] and data[highPartition]
-                //update pointers
-                swap(data,lowPartition, highPartition);
-                
-                ++lowPartition;
-                --highPartition;
-            }
-        }
-        return highPartition;*/
-        
     }
     
     /**
+     * Recursively sorts high partitions and low partitions
      * @param int[] data
      * @param start : beginning of array
      * @param stop : end of array
@@ -129,7 +92,12 @@ public class QuickSort1
         sort(data, low, j-1);
         sort(data, j+1, high);        
     }
-    
+    /**
+     * swaps the data points at index i and j
+     * @param data
+     * @param i
+     * @param j
+     */
     public void swap(int[] data, int i, int j)
     {
         int temp = data[i];

@@ -3,7 +3,7 @@
 /**
  * quick sort: 1st item as pivot
  * partition size 100 stopping case: insertion sort to finish
- * @author Bryan
+ * @author Bryan Cheung
  *
  */
 public class QuickSort2
@@ -16,7 +16,14 @@ public class QuickSort2
     {
         return data[start];
     }
-
+    /**
+     * Partitions array into a high partition and low partition
+     *  returns the highPartition start index
+     * @param data
+     * @param start
+     * @param stop
+     * @return
+     */
     public int partition(int[] data, int start, int stop)
     {
         int lowPartition = start;
@@ -49,6 +56,9 @@ public class QuickSort2
     }
     
     /**
+     * Recursively sorts highPartition and lowPartition
+     * base case: partition size<= 100. 
+     * Insertion sort to completion
      * @param int[] data
      * @param start : beginning of array
      * @param stop : end of array
@@ -79,7 +89,12 @@ public class QuickSort2
         sort(data, low, j-1);
         sort(data, j+1, high);        
     }
-    
+    /**
+     * swaps data items at index i with j
+     * @param data
+     * @param i
+     * @param j
+     */
     public void swap(int[] data, int i, int j)
     {
         int temp = data[i];
